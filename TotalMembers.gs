@@ -1,4 +1,4 @@
-function updateStaff(e) {
+function updateStaff() {
   let sheet = SpreadsheetApp.getActive().getSheetByName("Training roles");
   let range = sheet.getRange("G2:G");
   range.setValue("")
@@ -6,6 +6,8 @@ function updateStaff(e) {
   let supervisors = [];
   let apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/24832809/users?limit=100&sortOrder=Asc").getContentText();
   let apiResponseParsed = JSON.parse(apiResponse)
+
+  SpreadsheetApp.getActive().getSheetByName("Training roles").getRange("G2:G").setValue("")
   
   // LD
   if(apiResponseParsed.data) {
@@ -215,13 +217,8 @@ function updateStaff(e) {
   }
   
   // FINAL CHECKS
-  let emptySlots = range.getNumRows() - supervisors.length;
-  console.log(range.getNumRows(), supervisors.length, emptySlots)
-  for(let i = 0; i < emptySlots; i++) {
-    supervisors.push([""]);
-  }
   console.log("setting range...")
   console.log(supervisors)
-  SpreadsheetApp.getActive().getSheetByName("Training roles").getRange("G2:G").setValues(supervisors)
+  SpreadsheetApp.getActive().getSheetByName("Training roles").getRange(2, 7, supervisors.length, 1).setValues(supervisors)
 
 }
