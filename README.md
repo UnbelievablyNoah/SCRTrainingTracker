@@ -15,7 +15,7 @@ Manual training tracker that work with trainings with SCR
 10. Choose which deployment should run should be: `Head`
 11. Select event source should be: `Time-driven`
 12. Select type of time based trigger should be: `Week timer`
-13. Select day of week should be: `Every Monday`
+13. Select day of week should for example be: `Every Monday`, but could be any day you like. Like sunday cause most results are announced saturday.
 14. Select time of day should be: `Midnight to 1am`
 15. Press `save` bottom right
 16. Choose your google account
