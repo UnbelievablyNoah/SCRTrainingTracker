@@ -9,6 +9,11 @@ Manual training tracker that work with trainings with SCR
   * Filter by type
   * Leaderboard of amount of trainings you done with someone - based of filters
   * total trainings, also per type - based of filters
+* Submit systemm
+  * Easy to use
+  * Automatic putting in roles sort of
+  * Automatic sorting
+* See all of your trainings easily per type
 * Nice format in the tabs (except readme tab)
 
 ## Setup
