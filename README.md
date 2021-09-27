@@ -9,7 +9,7 @@ Manual training tracker that work with trainings with SCR
   * Filter by type
   * Leaderboard of amount of trainings you done with someone - based of filters
   * total trainings, also per type - based of filters
-* Nice format in the tabs (except first tab)
+* Nice format in the tabs (except readme tab)
 
 ## Setup
 1. Go to https://docs.google.com/spreadsheets/d/1wxzEEFucPektf0dO63EozcEKnGirJa23D6Bqrwea09s
