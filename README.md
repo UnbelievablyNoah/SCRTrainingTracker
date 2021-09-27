@@ -1,6 +1,15 @@
 # SCRTrainingTracker
 Manual training tracker that work with trainings with SCR
 
+## Features
+* Automatically sorts trainings
+* Lookup system
+  * Filter by date and between dates
+  * Filter by name of hosts or that is included in co hosts
+  * Filter by type
+  * Leaderboard of amount of trainings you done with someone - based of filters
+  * total trainings, also per type - based of filters
+* Nice format in the tabs (except first tab)
 
 ## Setup
 1. Go to https://docs.google.com/spreadsheets/d/1wxzEEFucPektf0dO63EozcEKnGirJa23D6Bqrwea09s
