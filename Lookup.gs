@@ -1,4 +1,4 @@
-function onEdit(e) {
+function onLookup(e) {
   if(e.range.getSheet().getName() != "Lookup") return
   let activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = activeSpreadsheet.getSheetByName("Lookup");
