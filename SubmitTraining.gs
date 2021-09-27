@@ -1,4 +1,8 @@
 function onEdit(e) {
+  onSubmit(e)
+  onLookup(e);
+}
+function onSubmit(e) {
   if(!e) {
     console.log("weird");
     return;
