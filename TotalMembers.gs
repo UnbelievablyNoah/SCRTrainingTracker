@@ -1,10 +1,6 @@
-function updateStaff() {
-  let sheet = SpreadsheetApp.getActive().getSheetByName("Training roles");
-  let range = sheet.getRange("G2:G");
-  range.setValue("")
-
+function getUsers(roleID) {
   let supervisors = [];
-  let apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/24832809/users?limit=100&sortOrder=Asc").getContentText();
+  let apiResponse = UrlFetchApp.fetch(`https://groups.roblox.com/v1/groups/3620943/roles/${roleID}/users?limit=100&sortOrder=Asc`).getContentText();
   let apiResponseParsed = JSON.parse(apiResponse)
 
   SpreadsheetApp.getActive().getSheetByName("Training roles").getRange("G2:G").setValue("")
@@ -19,203 +15,61 @@ function updateStaff() {
   } else {
     console.log(apiResponseParsed)
   }
-  
+  console.log(supervisors)
+  return supervisors
+}
+
+function updateStaff() {
+  let sheet = SpreadsheetApp.getActive().getSheetByName("Training roles");
+  let range = sheet.getRange("G2:G");
+  range.setValue("")
+  SpreadsheetApp.getActive().getSheetByName("Training roles").getRange("G2:G").setValue("")
+  let supervisors = [];
+
+  // LD
+  supervisors = supervisors.concat(getUsers("24832809"))
+
   // SDS
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/27002287/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("27002287"))
   
   // SGD
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/39740301/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
-  
+  supervisors = supervisors.concat(getUsers("39740301"))
+
   // SSG
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/27002275/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
-  
+  supervisors = supervisors.concat(getUsers("27002275"))
+
   // PRA
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/24832773/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("24832773"))
   
   // MOS
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/40996603/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("40996603"))
   
   // DM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/27002260/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("27002260"))
   
   // PM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/27002246/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("27002246"))
   
   // GM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/39740424/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("39740424"))
   
   // SM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/27002087/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("27002087"))
   
   // EM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/25161876/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("25161876"))
   
   // OM
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/25161363/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("25161363"))
   
   // HOO
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/50555430/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("50555430"))
   
   // BD
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/24867706/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
+  supervisors = supervisors.concat(getUsers("24867706"))
   
   // MD
-  apiResponse = UrlFetchApp.fetch("https://groups.roblox.com/v1/groups/3620943/roles/24832772/users?limit=100&sortOrder=Asc").getContentText();
-  apiResponseParsed = JSON.parse(apiResponse)
-  
-  if(apiResponseParsed.data) {
-    console.log(apiResponseParsed)
-    for(let value in apiResponseParsed.data) {
-      console.log(apiResponseParsed.data[value])
-      supervisors.push([apiResponseParsed.data[value].username])
-    }
-  } else {
-    console.log(apiResponseParsed)
-  }
-  
+  supervisors = supervisors.concat(getUsers("24832772"))
   // FINAL CHECKS
   console.log("setting range...")
   console.log(supervisors)
